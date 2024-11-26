@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <configuration>
+       <!-- 其他配置... -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/app.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+       <!-- 配置Redis客户端日志 -->
+       <logger name="io.lettuce.core" level="DEBUG"/>
+       <!-- 如果使用的是Jedis客户端，则配置为：
+       <logger name="redis.clients.jedis" level="DEBUG"/> -->
+       
+       <!-- 根日志级别 -->
+       <root level="INFO">
+           <appender-ref ref="FILE"/>
+           <appender-ref ref="CONSOLE"/>
+           <!-- 其他Appender参考... -->
+       </root>
+   </configuration>
